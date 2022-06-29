@@ -1,0 +1,26 @@
+{
+  "name": "qrz-scraper",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "npx nodemon",
+    "start": "ts-node --esm index.ts"
+  },
+  "keywords": [],
+  "author": "stopnoanime",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.18",
+    "ts-node": "^10.8.1"
+  },
+  "dependencies": {
+    "node-fetch": "^3.2.6"
+  },
+  "nodemonConfig": {
+    "execMap": {
+      "ts": "ts-node --esm"
+    }
+  }
+}
