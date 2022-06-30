@@ -1,7 +1,7 @@
 # qrz-scraper
 Simple web scraper used to extract QSO data from QRZ.com. 
 As of now it exports only these fields: 
-`gso_date, gso_date_off, call, station_callsign, freq, mode, freq_rx, pwr, tx_pwr, rst_rcvd, rst_sent, gridsquare, my_gridsquare, time_on, time_off`
+`gso_date, gso_date_off, call, station_callsign, freq, mode, freq_rx, tx_pwr, rst_rcvd, rst_sent, gridsquare, my_gridsquare, time_on, time_off, qsl_rcvd`
 This is enough information to properly inport the logbook into ClubLog.
 
 ## Usage

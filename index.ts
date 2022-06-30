@@ -15,7 +15,7 @@ const logBookURL = 'http://logbook.qrz.com'
 const rowDecoding = [
     [],
 
-    [ {type: 'single', find: 'QSO Start', save: 'qso_date'} ],
+    [ {type: 'single', find: 'QSO Start', save: 'qso_date'}, {type: 'single', find: 'Confirmed', save: 'qsl_rcvd'} ],
 
     [ {type: 'single', find: 'QSO End', save: 'qso_date_off'} ],
 
@@ -95,7 +95,7 @@ function convertDate(input: string, date: string, time: string, data: {[key: str
 
 function replaceØ(fields: string[], data: {[key: string]: string}) {
     fields.forEach(field => {
-        data[field] = data[field].replace('Ø','0')
+        data[field] = data[field].replaceAll('Ø','0')
     })
 }
 
@@ -103,8 +103,8 @@ function convertDecodedDataToRecord(data: {[key: string]: string}) {
     //Remove unit from freq and pwr
     removeAfterSpace(['freq', 'freq_rx', 'pwr', 'tx_pwr'], data)
 
-    //Distance isn't necessary in log for my use
     delete data['distance'];
+    delete data['pwr'];
     
     //Covert dates and add time property
     convertDate('qso_date', 'qso_date', 'time_on', data)
@@ -112,6 +112,10 @@ function convertDecodedDataToRecord(data: {[key: string]: string}) {
 
     //Replace Ø with normal 0
     replaceØ(['call', 'station_callsign'], data)
+
+    //Set qsl_rcvd
+    if(data['qsl_rcvd'] == 'no') data['qsl_rcvd'] = 'n'
+    else data['qsl_rcvd'] = 'y'
 
     return data
 }
