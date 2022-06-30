@@ -16,7 +16,12 @@
     "ts-node": "^10.8.1"
   },
   "dependencies": {
-    "node-fetch": "^3.2.6"
+    "adif-parser-ts": "^0.4.40",
+    "axios": "^0.27.2",
+    "axios-cookiejar-support": "^4.0.2",
+    "cheerio": "^1.0.0-rc.12",
+    "prompts": "^2.4.2",
+    "tough-cookie": "^4.0.0"
   },
   "nodemonConfig": {
     "execMap": {
